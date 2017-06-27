@@ -1,0 +1,20 @@
+version: '2'
+services:
+  web:
+    environment:
+      - ARANGODB_PASSWORD
+      - ARANGODB_USERNAME
+    ports:
+      - 3000:3000
+    image: mikewilliamson/energuide
+    links:
+      - arangodb
+  arangodb:
+    environment:
+      - ARANGO_ROOT_PASSWORD
+    image: arangodb/arangodb:3.1.23
+    volumes:
+      - data:/var/lib/arangodb3
+volumes:
+  data:
+    driver: local
