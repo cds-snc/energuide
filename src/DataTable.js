@@ -1,5 +1,5 @@
-const React = require('react')
-const { Table, Column, Cell } = require('fixed-data-table')
+import React, { Component } from 'react'
+import { Table, Column, Cell } from 'fixed-data-table'
 
 const capitalize = str => str.charAt(0).toUpperCase() + str.slice(1)
 
@@ -8,7 +8,7 @@ const TextCell = ({ rowIndex, field, data }) =>
     {data[rowIndex][field]}
   </Cell>
 
-class DataTable extends React.Component {
+class DataTable extends Component {
   createColumns(data) {
     let cols = []
     if (data.length > 0) {
@@ -40,4 +40,4 @@ class DataTable extends React.Component {
   }
 }
 
-module.exports.DataTable = DataTable
+export default DataTable

@@ -1,13 +1,12 @@
-const React = require('react')
-const { house } = require('./data/house')
-const { mount, shallow } = require('enzyme')
+import React from 'react'
+import { house } from './data/house'
+import { mount, shallow } from 'enzyme'
+import DataTable from '../src/DataTable'
 
-const { DataTable } = require('../src/DataTable')
-
-describe('HouseDataTable component', () => {
+describe('DataTable component', () => {
   it('generates columns based on the number of attributes', () => {
     let a = [{ foo: 'bar' }]
-    let b = [{ foo: 'bar' , fizz: 'buzz' }]
+    let b = [{ foo: 'bar', fizz: 'buzz' }]
     const renderedA = shallow(<DataTable data={a} />)
     const renderedB = shallow(<DataTable data={b} />)
     expect(renderedA.children().length).toEqual(1)
