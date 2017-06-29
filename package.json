@@ -35,6 +35,7 @@
     "react-dom": "^15.6.1"
   },
   "jest": {
-    "verbose": true
+    "verbose": true,
+    "testEnvironment" : "node"
   }
 }
