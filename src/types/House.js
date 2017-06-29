@@ -1,4 +1,4 @@
-const {
+import {
   GraphQLObjectType,
   GraphQLString,
   GraphQLList,
@@ -6,7 +6,7 @@ const {
   GraphQLFloat,
   GraphQLInt,
   GraphQLNonNull,
-} = require('graphql');
+} from 'graphql'
 
 var House = new GraphQLObjectType({
   name: 'House',
@@ -1852,6 +1852,6 @@ var House = new GraphQLObjectType({
       description: '',
     },
   }),
-});
+})
 
-module.exports.House = House;
+export default House

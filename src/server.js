@@ -1,10 +1,11 @@
-const React = require('react')
-const ReactDOM = require('react-dom/server')
-const express = require('express')
+import React from 'react'
+import ReactDOM from 'react-dom/server'
+import express from 'express'
+import path from 'path'
+import App from './App'
+import { template } from './template'
+
 const server = express()
-const path = require('path')
-const { App } = require('./App')
-const { template } = require('./template')
 
 server.use(express.static(process.cwd() + '/dist/public'))
 
@@ -14,4 +15,4 @@ server.get('/', (req, res, next) => {
   res.send(html)
 })
 
-module.exports.server = server
+export default server

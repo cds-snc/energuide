@@ -1,5 +1,5 @@
-const request = require('supertest')
-const { server } = require('../src/server')
+import request from 'supertest'
+import server from '../src/server'
 
 describe('Server', () => {
   it('serves the / route', async () => {

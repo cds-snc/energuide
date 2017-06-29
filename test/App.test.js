@@ -1,6 +1,6 @@
-const React = require('react')
-const { shallow } = require('enzyme')
-const { App } = require('../src/App')
+import React from 'react'
+import { shallow } from 'enzyme'
+import App from '../src/App'
 
 describe('App component', () => {
   it('renders text', () => {

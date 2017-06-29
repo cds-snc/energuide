@@ -1,5 +1,5 @@
 import React from 'react'
-import { house } from './data/house'
+import house from './data/house'
 import { mount, shallow } from 'enzyme'
 import DataTable from '../src/DataTable'
 

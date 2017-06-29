@@ -1,6 +1,6 @@
-const React = require('react')
+import React, { Component } from 'react'
 
-class App extends React.Component {
+class App extends Component {
 
   handleClick() {
     console.log('clicked.')
@@ -15,4 +15,4 @@ class App extends React.Component {
   }
 }
 
-module.exports.App = App
+export default App

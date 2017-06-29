@@ -1,6 +1,6 @@
 import { Database } from 'arangojs'
 import Connection from '../src/database'
-import { house } from './data/house'
+import house from './data/house'
 
 // About the ugliness:
 // Since Jest runs tests in parallel, each file needs to create it's own db,
@@ -28,9 +28,7 @@ let db, buildingsCollection
 describe('Database functions', () => {
   beforeAll(async () => {
     //create a generic connection to the db
-    const info = await conn.createDatabase(dbname, [
-      { username, password },
-    ])
+    const info = await conn.createDatabase(dbname, [{ username, password }])
 
     let testdb = new Database({ databaseName: dbname, url })
 

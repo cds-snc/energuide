@@ -1,4 +1,4 @@
-const {
+import {
   GraphQLSchema,
   GraphQLObjectType,
   GraphQLString,
@@ -6,9 +6,9 @@ const {
   GraphQLID,
   GraphQLFloat,
   GraphQLInt,
-  GraphQLNonNull
-} = require('graphql')
-const { House } = require('./types/House')
+  GraphQLNonNull,
+} from 'graphql'
+import House from './types/House'
 
 var query = new GraphQLObjectType({
   name: 'Query',
@@ -17,15 +17,15 @@ var query = new GraphQLObjectType({
       args: {
         id: {
           description: 'id of the house',
-          type: new GraphQLNonNull(GraphQLID)
-        }
+          type: new GraphQLNonNull(GraphQLID),
+        },
       },
       type: House,
       resolve: (source, args, { db }, info) => {
         return db.getHouseByID(args.id)
       },
     },
-  }
+  },
 })
 
-module.exports.schema = new GraphQLSchema({ query })
+export default new GraphQLSchema({ query })

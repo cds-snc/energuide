@@ -1,8 +1,8 @@
-const request = require('supertest')
-const graphqlHTTP = require('express-graphql')
-const { schema } = require('../src/schema')
-const { server } = require('../src/server')
-const { house } = require('./data/house')
+import request from 'supertest'
+import graphqlHTTP from 'express-graphql'
+import schema from '../src/schema'
+import server from '../src/server'
+import house from './data/house'
 
 let houseMock = jest.fn().mockReturnValueOnce(house)
 
