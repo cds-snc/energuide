@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { Table, Column, Cell } from 'fixed-data-table'
+import { Table, Column, Cell } from 'fixed-data-table-2'
 
 const capitalize = str => str.charAt(0).toUpperCase() + str.slice(1)
 
