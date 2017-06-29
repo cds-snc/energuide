@@ -19,9 +19,9 @@ describe('DataTable component', () => {
   })
 
   it('complains when no data is given', () => {
-    expect(
-      () => shallow(<DataTable  />)
-    ).toThrow()
+    console.error = jest.fn()
+    expect(() => shallow(<DataTable />)).toThrow()
+    expect(console.error.mock.calls.length).toBeGreaterThan(0)
   })
 
   it('generates columns even for large objects', () => {
