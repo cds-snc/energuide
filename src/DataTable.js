@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { Table, Column, Cell } from 'fixed-data-table'
 
 const capitalize = str => str.charAt(0).toUpperCase() + str.slice(1)
@@ -9,6 +10,10 @@ const TextCell = ({ rowIndex, field, data }) =>
   </Cell>
 
 class DataTable extends Component {
+  static propTypes = {
+    data: PropTypes.array.isRequired,
+  }
+
   createColumns(data) {
     let cols = []
     if (data.length > 0) {

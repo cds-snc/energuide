@@ -18,6 +18,12 @@ describe('DataTable component', () => {
     expect(table.children().length).toEqual(0)
   })
 
+  it('complains when no data is given', () => {
+    expect(
+      () => shallow(<DataTable  />)
+    ).toThrow()
+  })
+
   it('generates columns even for large objects', () => {
     let attributeCount = Object.keys(house).length
     const table = shallow(<DataTable data={[house]} />)
