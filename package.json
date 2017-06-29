@@ -27,6 +27,7 @@
     "arangojs": "^5.6.1",
     "express": "^4.15.3",
     "express-graphql": "^0.6.6",
+    "fixed-data-table": "^0.6.4",
     "graphql": "^0.10.3",
     "react": "^15.6.1",
     "react-dom": "^15.6.1"
