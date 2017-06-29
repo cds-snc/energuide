@@ -22,6 +22,7 @@ const loaders = [
     exclude: /node_modules/,
     query: {
       presets: ['env', 'react'],
+      plugins: ['transform-class-properties'],
     },
   },
 ]
