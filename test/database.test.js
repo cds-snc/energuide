@@ -23,14 +23,14 @@ const url = `http://${username}:${password}@arangodb:8529`
 const dbname = dbNameFromFile(__filename)
 const conn = new Database({ url })
 
-let db, buildingsCollection
+let db, testdb, buildingsCollection
 
 describe('Database functions', () => {
   beforeAll(async () => {
     //create a generic connection to the db
     const info = await conn.createDatabase(dbname, [{ username, password }])
 
-    let testdb = new Database({ databaseName: dbname, url })
+    testdb = new Database({ databaseName: dbname, url })
 
     buildingsCollection = testdb.collection('buildings')
 
@@ -40,7 +40,11 @@ describe('Database functions', () => {
   })
 
   afterAll(async () => {
-    conn.dropDatabase(dbname)
+    await conn.dropDatabase(dbname)
+  })
+
+  afterEach(async () => {
+    await testdb.truncate()
   })
 
   describe('getHouseByID', () => {
@@ -48,6 +52,15 @@ describe('Database functions', () => {
       await buildingsCollection.save(house)
       let result = await db.getHouseByID(house.house_id)
       expect(result.house_id).toEqual(house.house_id)
+    })
+  })
+
+  describe('getHouses', () => {
+    it('returns a specified number of houses', async () => {
+      await buildingsCollection.save({foo: 'bar'})
+      await buildingsCollection.save({fizz: 'buzz'})
+      let result = await db.getHouses(1)
+      expect(result.length).toEqual(1)
     })
   })
 })

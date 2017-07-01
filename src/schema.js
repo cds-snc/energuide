@@ -25,6 +25,18 @@ var query = new GraphQLObjectType({
         return db.getHouseByID(args.id)
       },
     },
+    houses: {
+      args: {
+        count: {
+          description: 'the number of houses you would like',
+          type: new GraphQLNonNull(GraphQLInt),
+        },
+      },
+      type: new GraphQLList(House),
+      resolve: (source, args, { db }, info) => {
+        return db.getHouses(args.count)
+      },
+    },
   },
 })
 

@@ -11,6 +11,15 @@ const Connection = connection => {
       let results = await connection.query(query)
       return results.next()
     },
+    getHouses: async count => {
+      let query = aql`
+      FOR building IN buildings
+        LIMIT ${count}
+        RETURN building
+      `
+      let results = await connection.query(query)
+      return results.all()
+    },
   }
 }
 

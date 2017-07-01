@@ -8,6 +8,7 @@
   "scripts": {
     "test": "jest",
     "build": "webpack -p",
+    "build:dev": "webpack --devtool source-map",
     "start": "node dist/backend.js"
   },
   "devDependencies": {
@@ -25,13 +26,16 @@
     "webpack-node-externals": "^1.6.0"
   },
   "dependencies": {
+    "apollo-client": "^1.6.1",
     "arangojs": "^5.6.1",
     "express": "^4.15.3",
     "express-graphql": "^0.6.6",
     "fixed-data-table-2": "^0.7.17",
     "graphql": "^0.10.3",
+    "graphql-tag": "^2.4.2",
     "prop-types": "^15.5.10",
     "react": "^15.6.1",
+    "react-apollo": "^1.4.2",
     "react-dom": "^15.6.1"
   },
   "jest": {
