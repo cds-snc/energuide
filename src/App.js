@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
-import DataTable from './DataTable'
+import styled from 'styled-components'
 import ApolloClient from 'apollo-client'
 import gql from 'graphql-tag'
+import DataTable from './DataTable'
 
 const client = new ApolloClient()
 
@@ -111,6 +112,11 @@ let query = gql`
   }
       `
 
+const Main = styled.main`
+  width: 90%;
+  margin: 4em auto;
+`
+
 class App extends Component {
   state = {
     data: [],
@@ -131,10 +137,10 @@ class App extends Component {
 
   render() {
     return (
-      <main>
+      <Main>
         <h1 onClick={this.handleClick}>Energuide</h1>
-        <DataTable data={ this.state.data }/>
-      </main>
+        <DataTable data={this.state.data} />
+      </Main>
     )
   }
 }
