@@ -18,14 +18,17 @@ class DataTable extends Component {
     let cols = []
     if (data.length > 0) {
       Object.keys(data[0]).forEach(attr => {
-        cols.push(
-          <Column
-            header={capitalize(attr)}
-            key={attr}
-            cell={<TextCell data={data} field={attr} />}
-            width={200}
-          />
-        )
+        // ignore graphql __type
+        if (attr !== '__typename') {
+          cols.push(
+            <Column
+              header={capitalize(attr)}
+              key={attr}
+              cell={<TextCell data={data} field={attr} />}
+              width={200}
+            />
+          )
+        }
       })
       return cols
     }
