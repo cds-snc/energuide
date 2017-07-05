@@ -131,9 +131,9 @@ aproba@^1.0.3:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/aproba/-/aproba-1.1.2.tgz#45c6629094de4e96f693ef7eab74ae079c240fc1"
 
-arangojs@^5.6.1:
-  version "5.6.1"
-  resolved "https://registry.yarnpkg.com/arangojs/-/arangojs-5.6.1.tgz#c51ca877f9d24e0796877528ca82cbecdb279c42"
+arangojs@^5.7.0:
+  version "5.7.0"
+  resolved "https://registry.yarnpkg.com/arangojs/-/arangojs-5.7.0.tgz#e51651853d9379f3a867cbac390087d5395dd2b4"
   dependencies:
     es6-error "^4.0.1"
     http-errors "^1.6.1"
