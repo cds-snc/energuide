@@ -6,7 +6,7 @@ services:
       - ARANGODB_USERNAME
     ports:
       - 3000:3000
-    image: mikewilliamson/energuide
+    image: cdssnc/energuide
     links:
       - arangodb
   arangodb:
