@@ -8,6 +8,7 @@
   "scripts": {
     "test": "jest",
     "build": "webpack -p",
+    "dockerize": "webpack -p && docker build -t cdssnc/energuide .",
     "build:dev": "webpack --devtool source-map",
     "start": "node dist/backend.js"
   },
