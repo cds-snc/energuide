@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import ApolloClient from 'apollo-client'
 import gql from 'graphql-tag'
 import DataTable from './DataTable'
+import EnerguideLogo from './EnerguideLogo'
 
 const client = new ApolloClient()
 
@@ -138,7 +139,7 @@ class App extends Component {
   render() {
     return (
       <Main>
-        <h1 onClick={this.handleClick}>Energuide</h1>
+        <EnerguideLogo />
         <DataTable data={this.state.data} />
       </Main>
     )
