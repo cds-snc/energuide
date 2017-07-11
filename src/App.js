@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import styled from 'styled-components'
 import ApolloClient from 'apollo-client'
 import gql from 'graphql-tag'
+import { EnerguideLogo } from '@cdssnc/gcui'
 import DataTable from './DataTable'
-import EnerguideLogo from './EnerguideLogo'
 
 const client = new ApolloClient()
 

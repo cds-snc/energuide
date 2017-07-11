@@ -2,6 +2,14 @@
 # yarn lockfile v1
 
 
+"@cdssnc/gcui@^0.0.6":
+  version "0.0.6"
+  resolved "https://registry.yarnpkg.com/@cdssnc/gcui/-/gcui-0.0.6.tgz#4083f8b17884df6a35c87e9b95761e97093f4059"
+  dependencies:
+    react "^15.6.1"
+    react-dom "^15.6.1"
+    styled-components "^2.1.1"
+
 "@types/async@^2.0.31":
   version "2.0.40"
   resolved "https://registry.yarnpkg.com/@types/async/-/async-2.0.40.tgz#ac02de68e66c004a61b7cb16df8b1db3a254cca9"
