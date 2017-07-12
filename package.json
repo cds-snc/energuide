@@ -7,9 +7,9 @@
   "license": "MIT",
   "scripts": {
     "test": "jest",
-    "build": "webpack -p",
+    "build": "webpack -p --env production",
     "dockerize": "webpack -p && docker build -t cdssnc/energuide .",
-    "build:dev": "webpack --devtool source-map",
+    "build:dev": "webpack --env development --devtool source-map",
     "start": "node dist/backend.js"
   },
   "devDependencies": {
