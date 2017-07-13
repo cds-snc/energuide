@@ -2,19 +2,6 @@ const webpack = require('webpack')
 const path = require('path')
 const nodeExternals = require('webpack-node-externals')
 
-const plugins = [
-  new webpack.optimize.UglifyJsPlugin({
-    compress: {
-      warnings: false,
-    },
-  }),
-  new webpack.DefinePlugin({
-    'process.env': {
-      NODE_ENV: JSON.stringify('production'),
-    },
-  }),
-]
-
 const uglify = new webpack.optimize.UglifyJsPlugin({
   compress: {
     warnings: false,
