@@ -4,6 +4,7 @@ import ApolloClient from 'apollo-client'
 import gql from 'graphql-tag'
 import { EnerguideLogo } from '@cdssnc/gcui'
 import DataTable from './DataTable'
+import FipBar from './FipBar'
 
 const client = new ApolloClient()
 
@@ -111,16 +112,32 @@ let query = gql`
       ersspacecoolenergy
     }
   }
-      `
+`
 
 const Main = styled.main`
-  width: 90%;
-  margin: 4em auto;
+  width: 80%;
+  margin-top: 5em;
+  margin-left: auto;
+  margin-right: auto;
 `
 
 class App extends Component {
   state = {
     data: [],
+    fiplinks: [
+      {
+        url: 'http://www.canada.ca/en/index.html',
+        text: 'Canada.ca',
+      },
+      {
+        url: 'http://www.servicecanada.gc.ca/eng/home.shtml',
+        text: 'Services',
+      },
+      {
+        url: 'http://www.canada.gc.ca/depts/major/depind-eng.html',
+        text: 'Departments',
+      },
+    ],
   }
 
   handleClick() {
@@ -138,10 +155,13 @@ class App extends Component {
 
   render() {
     return (
-      <Main>
-        <EnerguideLogo />
-        <DataTable data={this.state.data} />
-      </Main>
+      <div>
+        <FipBar links={this.state.fiplinks} />
+        <Main>
+          <EnerguideLogo />
+          <DataTable data={this.state.data} />
+        </Main>
+      </div>
     )
   }
 }

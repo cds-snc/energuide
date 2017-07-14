@@ -1,3 +1,11 @@
+import fs from 'fs'
+
+//TODO: find a better way to do this.
+let css = fs.readFileSync(
+  './node_modules/bootstrap/dist/css/bootstrap.css',
+  'utf8'
+)
+
 let template = body => {
   return `
   <!DOCTYPE html>
@@ -7,6 +15,7 @@ let template = body => {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fixed-data-table/0.6.4/fixed-data-table.min.css" integrity="sha256-Ej8KA18gbTn0Tp6vdx2Fthrooab/ca6+K093kwWSh8s=" crossorigin="anonymous" />
     </head>
     <body>
+      <style>${css}</style>
       <div id="app">${body}</div>
       <script src="bundle.js"></script>
     </body>
@@ -15,4 +24,3 @@ let template = body => {
 }
 
 export default template
-
