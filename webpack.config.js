@@ -25,7 +25,7 @@ const loaders = [
       presets: ['env', 'react'],
       plugins: ['transform-class-properties'],
     },
-  },
+  }
 ]
 
 const clientConfig = (plugins, loaders) => {
@@ -36,7 +36,7 @@ const clientConfig = (plugins, loaders) => {
       filename: 'bundle.js',
     },
     plugins,
-    module: { loaders },
+    module: { rules: loaders },
   }
 }
 
@@ -52,7 +52,6 @@ const server = {
 }
 
 module.exports = env => {
-  console.log(env)
   if (env == 'production') {
     return [clientConfig([setNodeEnv(env), uglify], loaders), server]
   } else {
