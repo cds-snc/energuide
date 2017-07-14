@@ -8,7 +8,7 @@
   "scripts": {
     "test": "jest",
     "build": "webpack -p --env production",
-    "dockerize": "webpack -p && docker build -t cdssnc/energuide .",
+    "dockerize": "yarn run build && docker build -t cdssnc/energuide .",
     "build:dev": "webpack --env development --devtool source-map",
     "start": "node dist/backend.js"
   },
