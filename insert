@@ -38,7 +38,6 @@ with open(filename, 'r') as csvfile:
         #     exit(0)
         doc = buildings.createDocument()
         house_id = row['HOUSE_ID']
-        doc['_key'] = house_id
         for key in row.keys():
             doc[key.lower()] = row[key] # death to shouty case!
         try:
