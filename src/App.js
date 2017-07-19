@@ -126,7 +126,7 @@ class App extends Component {
     data: [],
     fiplinks: [
       {
-        url: 'http://www.canada.ca/en/index.html',
+        url: 'https://www.canada.ca/en/index.html',
         text: 'Canada.ca',
       },
       {
