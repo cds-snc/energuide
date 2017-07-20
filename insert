@@ -11,7 +11,6 @@ from datetime import datetime
 from docopt import docopt
 from sys import exit
 from deepdiff import DeepDiff
-from pprint import pprint
 import os
 import csv
 from pyArango.connection import *
@@ -31,18 +30,18 @@ buildings = db.collections['buildings']
 
 count = 0
 update_count = 0
+row_counts = {}
 
 with open(filename, 'r') as csvfile:
-    ers_data = csv.DictReader(csvfile, delimiter='|', quotechar='\\')
+    ers_data = csv.DictReader(csvfile, delimiter=',', quotechar='"')
     for row in ers_data:
+        row_counts[len(row)] = row_counts.setdefault(len(row), 0) + 1
         # if count > 5:
         #     exit(0)
         doc = buildings.createDocument()
         house_id = row['HOUSE_ID']
         for key in row.keys():
             doc[key.lower()] = row[key] # death to shouty case!
-        ts = datetime.strptime(row['CREATIONDATE'], '%Y-%m-%d %H:%M:%S').timestamp()
-        doc.creationdate = ts
         try:
             doc.save()
             count += 1
@@ -55,3 +54,4 @@ with open(filename, 'r') as csvfile:
 
 total = count + update_count
 print(f"Inserted {count} documents and skipped {update_count} updates. Total processed: {total}")
+print(f"Column counts for the rows: { row_counts }")
