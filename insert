@@ -7,7 +7,6 @@ Options:
     -h, --help    Show usage info.
 """
 
-from datetime import datetime
 from docopt import docopt
 from sys import exit
 from deepdiff import DeepDiff
