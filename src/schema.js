@@ -19,10 +19,14 @@ var query = new GraphQLObjectType({
           description: 'id of the house',
           type: new GraphQLNonNull(GraphQLID),
         },
+        date: {
+          description: 'the status of the house as of this date: YYYY-MM-DD',
+          type: GraphQLString,
+        },
       },
       type: House,
-      resolve: (source, args, { db }, info) => {
-        return db.getHouseByID(args.id)
+      resolve: async (source, { id, date }, { db }, info) => {
+        return db.getHouseByID(id, (date ? date : new Date))
       },
     },
     houses: {
@@ -33,7 +37,7 @@ var query = new GraphQLObjectType({
         },
       },
       type: new GraphQLList(House),
-      resolve: (source, args, { db }, info) => {
+      resolve: async (source, args, { db }, info) => {
         return db.getHouses(args.count)
       },
     },

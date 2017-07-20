@@ -1,6 +1,7 @@
 import { Database } from 'arangojs'
 import Connection from '../src/database'
-import house from './data/house'
+import houseData from './data/house'
+import housesData from './data/houses'
 
 // About the ugliness:
 // Since Jest runs tests in parallel, each file needs to create it's own db,
@@ -49,18 +50,41 @@ describe('Database functions', () => {
 
   describe('getHouseByID', () => {
     it('retrieves the data for a single house given an ID', async () => {
-      await buildingsCollection.save(house)
-      let result = await db.getHouseByID(house.house_id)
-      expect(result.house_id).toEqual(house.house_id)
+      let house_id = houseData[0].house_id
+
+      await Promise.all(
+        houseData.map(async datum => {
+          return buildingsCollection.save(datum)
+        })
+      )
+
+      let result = await db.getHouseByID(house_id)
+      expect(result.house_id).toEqual(house_id)
+    })
+
+    it('returns the state of the building as of the date provided', async () => {
+      let house_id = houseData[0].house_id
+
+      await Promise.all(
+        houseData.map(async datum => {
+          return await buildingsCollection.save(datum)
+        })
+      )
+
+      let result = await db.getHouseByID(house_id, '2016-07-30')
+      expect(result.air50p).toEqual('18.4639')
     })
   })
 
   describe('getHouses', () => {
     it('returns a specified number of houses', async () => {
-      await buildingsCollection.save({foo: 'bar'})
-      await buildingsCollection.save({fizz: 'buzz'})
-      let result = await db.getHouses(1)
-      expect(result.length).toEqual(1)
+      await Promise.all(
+        housesData.map(async datum => {
+          return await buildingsCollection.save(datum)
+        })
+      )
+      let result = await db.getHouses(2)
+      expect(result.length).toEqual(2)
     })
   })
 })
