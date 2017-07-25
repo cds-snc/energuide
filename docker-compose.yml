@@ -12,7 +12,7 @@ services:
   arangodb:
     environment:
       - ARANGO_ROOT_PASSWORD
-    image: arangodb/arangodb:3.1.23
+    image: arangodb/arangodb:3.2.0
     volumes:
       - data:/var/lib/arangodb3
 volumes:
