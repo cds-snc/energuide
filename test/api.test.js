@@ -138,6 +138,26 @@ describe('GraphQL API', () => {
       let { data } = response.body
       expect(data.house.air50p).toEqual('18.4639')
     })
+
+    it('returns the assessment dates for the house', async () => {
+      await Promise.all(
+        houseData.map(async datum => {
+          return await buildingsCollection.save(datum)
+        })
+      )
+
+      let response = await request(server)
+        .post('/graphql')
+        .set('Content-Type', 'application/graphql; charset=utf-8').send(`
+          query {
+            house(id: "${house_id}") {
+              dates
+            }
+          }
+        `)
+      let { data } = response.body
+      expect(data.house.dates).toContain("2016-08-04 16:21:38", "2016-07-26 15:09:50", "2017-01-24 17:35:22")
+    })
   })
 
   describe('houses(count: n)', () => {

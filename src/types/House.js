@@ -12,6 +12,13 @@ var House = new GraphQLObjectType({
   name: 'House',
   description: '',
   fields: () => ({
+    dates: {
+      type: new GraphQLList(GraphQLString),
+      description: 'The assesment dates for this house.',
+      resolve: (source, args, { db }, info) => {
+        return db.getDates(source.house_id)
+      },
+    },
     id: {
       type: GraphQLID,
       description: 'The unique identifier of the house.',

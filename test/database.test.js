@@ -74,6 +74,21 @@ describe('Database functions', () => {
       let result = await db.getHouseByID(house_id, '2016-07-30')
       expect(result.air50p).toEqual('18.4639')
     })
+
+    describe('.dates', () => {
+      it('gives the dates on file for the house', async () => {
+        let house_id = houseData[0].house_id
+
+        await Promise.all(
+          houseData.map(async datum => {
+            return buildingsCollection.save(datum)
+          })
+        )
+
+        let result = await db.getDates(house_id)
+        expect(result).toContain("2016-08-04 16:21:38", "2016-07-26 15:09:50", "2017-01-24 17:35:22")
+      })
+    })
   })
 
   describe('getHouses', () => {

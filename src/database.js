@@ -36,6 +36,16 @@ const Connection = connection => {
       let results = await connection.query(query)
       return results.all()
     },
+    getDates: async id => {
+      let query = aql`
+        FOR building IN buildings
+          FILTER building.house_id == ${id}
+          SORT building.creationdate ASC
+          RETURN buildings[*].creationdate
+      `
+      let results = await connection.query(query)
+      return results.next()
+    },
   }
 }
 
