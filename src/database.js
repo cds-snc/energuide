@@ -41,10 +41,10 @@ const Connection = connection => {
         FOR building IN buildings
           FILTER building.house_id == ${id}
           SORT building.creationdate ASC
-          RETURN buildings[*].creationdate
+          RETURN building.creationdate
       `
       let results = await connection.query(query)
-      return results.next()
+      return results.all()
     },
   }
 }
