@@ -1,7 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom/server'
 import express from 'express'
-import path from 'path'
 import App from './App'
 import template from './template'
 

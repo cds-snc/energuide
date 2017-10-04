@@ -1,4 +1,4 @@
-import { aql, Database } from 'arangojs'
+import { aql } from 'arangojs'
 
 const Connection = connection => {
   return {

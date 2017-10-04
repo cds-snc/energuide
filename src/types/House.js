@@ -3,9 +3,6 @@ import {
   GraphQLString,
   GraphQLList,
   GraphQLID,
-  GraphQLFloat,
-  GraphQLInt,
-  GraphQLNonNull,
 } from 'graphql'
 
 var House = new GraphQLObjectType({
@@ -314,7 +311,7 @@ var House = new GraphQLObjectType({
     },
 
     eghfurseaseff: {
-      //TODO: Duplicate?
+      // TODO: Duplicate?
       type: GraphQLString,
       description: 'Furnace Seasonal Efficiency',
     },

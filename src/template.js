@@ -1,6 +1,6 @@
 import fs from 'fs'
 
-//TODO: find a better way to do this.
+// TODO: find a better way to do this.
 let css = fs.readFileSync(
   './node_modules/bootstrap/dist/css/bootstrap.css',
   'utf8'

@@ -1,11 +1,9 @@
-import React, { Component } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 import { GoCSignature } from '@cdssnc/gcui'
 import {
-  Collapse,
   Navbar,
-  NavbarToggler,
   NavbarBrand,
   Nav,
   NavItem,
@@ -22,7 +20,7 @@ const HeaderBar = styled.div`
 `
 
 const StyledNavbar = styled(Navbar)`
-	width: 80%;
+  width: 80%;
   margin-left: auto;
   margin-right: auto;
 `
@@ -32,14 +30,14 @@ const Links = styled(Nav)`
 `
 
 const StyledNavLink = styled(NavLink)`
-	color: #fff;
-	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-	&:after {
-		content: "  |";
-	}
-	&:hover {
+  color: #fff;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  &:after {
+    content: '  |';
+  }
+  &:hover {
     color: #fff;
-	}
+  }
 `
 
 const LeftSpan = styled.span`
@@ -51,7 +49,7 @@ const RightSpan = styled.span`
   display: inline-table;
 `
 
-const FipBar = ({ links = [] }) =>
+const FipBar = ({ links = [] }) => (
   <HeaderBar>
     <StyledNavbar style={{ display: 'block' }}>
       <LeftSpan>
@@ -61,24 +59,23 @@ const FipBar = ({ links = [] }) =>
       </LeftSpan>
       <RightSpan>
         <Links>
-          {links.map((link, index) =>
+          {links.map((link, index) => (
             <NavItem key={index}>
-              <StyledNavLink href={link.url}>
-                {link.text}
-              </StyledNavLink>
+              <StyledNavLink href={link.url}>{link.text}</StyledNavLink>
             </NavItem>
-          )}
+          ))}
         </Links>
       </RightSpan>
     </StyledNavbar>
   </HeaderBar>
+)
 
 FipBar.propTypes = {
   links: PropTypes.arrayOf(
     PropTypes.shape({
       url: PropTypes.string.isRequired,
       text: PropTypes.string.isRequired,
-    })
+    }),
   ),
 }
 export default FipBar

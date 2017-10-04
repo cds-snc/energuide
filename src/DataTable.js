@@ -4,10 +4,15 @@ import { Table, Column, Cell } from 'fixed-data-table-2'
 
 const capitalize = str => str.charAt(0).toUpperCase() + str.slice(1)
 
-const TextCell = ({ rowIndex, field, data }) =>
-  <Cell>
-    {data[rowIndex][field]}
-  </Cell>
+const TextCell = ({ rowIndex, field, data }) => (
+  <Cell>{data[rowIndex][field]}</Cell>
+)
+
+TextCell.propTypes = {
+  rowIndex: PropTypes.number,
+  field: PropTypes.string,
+  data: PropTypes.arrayOf(PropTypes.object),
+}
 
 class DataTable extends Component {
   static propTypes = {
@@ -26,7 +31,7 @@ class DataTable extends Component {
               key={attr}
               cell={<TextCell data={data} field={attr} />}
               width={200}
-            />
+            />,
           )
         }
       })

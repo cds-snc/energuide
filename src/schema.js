@@ -4,7 +4,6 @@ import {
   GraphQLString,
   GraphQLList,
   GraphQLID,
-  GraphQLFloat,
   GraphQLInt,
   GraphQLNonNull,
 } from 'graphql'
@@ -26,7 +25,7 @@ var query = new GraphQLObjectType({
       },
       type: House,
       resolve: async (source, { id, date }, { db }, info) => {
-        return db.getHouseByID(id, (date ? date : new Date))
+        return db.getHouseByID(id, (date || new Date))
       },
     },
     houses: {
